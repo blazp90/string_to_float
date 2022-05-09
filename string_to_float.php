@@ -1,4 +1,4 @@
-/**
+    /**
      * Format string to float val
      *
      * @example:
