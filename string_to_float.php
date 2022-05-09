@@ -26,15 +26,18 @@
         // explode string
         $stringArr = preg_split("/[,.]+/", $number);
 
-        // loop numbers array
-        $float = '';
-        foreach($stringArr as $letter) {
-            // add point before decimals
-            if(end($stringArr) === $letter) {
-                $float .= '.';
+        // skipp process if no decimals provided
+        if(count($stringArr) > 1) {
+            // loop numbers array
+            $number = '';
+            foreach($stringArr as $letter) {
+                // add point before decimals
+                if(end($stringArr) === $letter) {
+                    $number .= '.';
+                }
+                $number .= $letter;
             }
-            $float .= $letter;
         }
 
-        return floatval($float);
+        return floatval($number);
     }
