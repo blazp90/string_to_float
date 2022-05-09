@@ -1,7 +1,7 @@
 Helper function for changing string to float value.<br />
 <br />
 Example:<br />
-2110           => 2110<br />
+2110           => 2110.0<br />
 2.110,60       => 2110.6<br />
 2,110.60       => 2110.6<br />
 2.110.60       => 2110.6<br />
