@@ -19,8 +19,7 @@
      *
      * @return float
      */
-    public function string_to_float($number)
-    {
+    function string_to_float($number) {
         // work with numbers only
         $number = preg_replace('#[^0-9\.,]#', '', $number);
 
