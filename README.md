@@ -1,3 +1,10 @@
+<h1>Helper code snippet</h1>
+<p>
+  Helper function that i`m using instande of <input type="number" /><br />
+  the input has up and down arrows, that can provide quick user mistakes if they using the keyboard.<br />
+  if you are using the input on iPhone, you are allowed only to use arrowns. That`s not optimal if you want to input large numbers(like -1985,56).
+</p>
+
 <h3>PHP</h3>
 string_to_float.php<br />
 Helper function for changing string to float value.<br />
