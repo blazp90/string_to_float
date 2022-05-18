@@ -27,9 +27,9 @@ Example:<br />
 <br />
 
 <h3>JavaScript</h3>
-<br />
-Helper function to change text input field to numeric field.<br />
 decimal_field.html<br />
+Helper function to change text input field to numeric field.<br />
+<br />
 Example allowed value (default settings):<br />
 1985<br />
 1.985<br />
