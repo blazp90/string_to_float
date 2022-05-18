@@ -1,4 +1,5 @@
-<h3>PHP</h3>(string_to_float.php) 
+<h3>PHP</h3>
+string_to_float.php<br />
 Helper function for changing string to float value.<br />
 <br />
 Example:<br />
