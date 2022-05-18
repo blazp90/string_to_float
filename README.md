@@ -4,7 +4,8 @@
   the input has up and down arrows, that can provide quick user mistakes if they using the keyboard.<br />
   if you are using the input on iPhone, you are allowed only to use arrowns. That`s not optimal if you want to input large numbers(like -1985,56).
 </p>
-
+<br />
+<br />
 <h3>PHP</h3>
 string_to_float.php<br />
 Helper function for changing string to float value.<br />
@@ -24,6 +25,7 @@ Example:<br />
 2,A1b,10.6080  => 2110.608<br />
 <br />
 <br />
+
 <h3>JavaScript</h3>
 <br />
 Helper function to change text input field to numeric field.<br />
