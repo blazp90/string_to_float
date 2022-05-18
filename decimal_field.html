@@ -1,0 +1,101 @@
+<style>
+    .number-field:invalid {
+        border: solid 1px red;
+    }
+</style>
+
+
+<label>Open decimal keyboard</label>
+<input type="text" class="number-field" pattern="^([-+][0-9]+)?[0-9]*([,\.][0-9]+)*([,\.][0-9]+)?$" inputmode="decimal" value="">
+
+<label>Open number keyboard</label>
+<input type="text" class="number-field" pattern="[0-9]+" inputmode="number" value="">
+
+
+<script type="application/javascript">
+    const sanitizeNumberField = {
+        maxNumbers: 4, // allowed max number before decimal separator, counted are only numbers other marks are skipped from count (+,-,.)
+        step: 2, // allowed max numbers after decimal separator
+        separator: ',', // decimal separator point(.) or comma(,)
+        oneSeparator: false, // allow only one separator (. or ,)
+        canPlus: true, // allow plus(+) mark on first place
+        canMinus: true, // allow plus(-) mark on first place
+
+        value: function(value) {
+            return this.val(value);
+        },
+        val: function(value) {
+            let validValue = '',
+                hasComma = false,
+                decimalCount = 0,
+                numbersCount = 0,
+                stringArray = value.split('');
+
+            for(let i = 0; i < stringArray.length; i++) {
+                if(this.step > 0) {
+                    if(this.oneSeparator) {
+                        // allow only one decimal separator, replace point with comma or comma with point
+                        if((stringArray[i] === '.' || stringArray[i] === ',') && !hasComma) {
+                            validValue += this.separator;
+                            hasComma = true;
+                        }
+                    } else {
+                        // find separator mark, to start decimal numbers validation
+                        if(stringArray[i] === this.separator && !hasComma) {
+                            validValue += this.separator;
+                            hasComma = true;
+                        }
+
+                        if((stringArray[i] === '.' && stringArray[i] !== this.separator) || (stringArray[i] === ',' && stringArray[i] !== this.separator)) {
+                            if(numbersCount < this.maxNumbers) {
+                                validValue += stringArray[i];
+                            } else if(!hasComma) {
+                                validValue += this.separator;
+                                hasComma = true;
+                            }
+                        }
+                    }
+                }
+
+                if(this.canPlus) {
+                    if(stringArray[i] === '+' && i === 0) {
+                        validValue += stringArray[i];
+                    }
+                }
+
+                if(this.canMinus) {
+                    if(stringArray[i] === '-' && i === 0) {
+                        validValue += stringArray[i];
+                    }
+                }
+
+                // allow only numbers
+                if(Number(stringArray[i]) || stringArray[i] === '0') {
+                    if(hasComma) {
+                        // validate number of decimal places
+                        if(decimalCount < this.step) {
+                            validValue += stringArray[i];
+                            decimalCount++;
+                        }
+                    } else if(!hasComma) {
+                        // validate number places
+                        if(numbersCount < this.maxNumbers) {
+                            validValue += stringArray[i];
+                            numbersCount++;
+                        }
+                    }
+                }
+            }
+
+            return validValue;
+        }
+    };
+
+
+    const numberField = document.querySelectorAll('.number-field');
+    numberField.forEach(function(field) {
+        field.addEventListener('keyup', (event) => {
+            event.target.value = sanitizeNumberField.val(event.target.value);
+        });
+    });
+</script>
