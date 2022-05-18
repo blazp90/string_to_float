@@ -46,7 +46,10 @@
                             hasComma = true;
                         }
 
+                        // allow adding separators
                         if((stringArray[i] === '.' && stringArray[i] !== this.separator) || (stringArray[i] === ',' && stringArray[i] !== this.separator)) {
+                            // if full numbers count is reached and the user has added wrong decimal separator, replace the separator with the walid one
+                            // else allow non walid separator
                             if(numbersCount < this.maxNumbers) {
                                 validValue += stringArray[i];
                             } else if(!hasComma) {
@@ -57,12 +60,14 @@
                     }
                 }
 
+                // allow adding plus(+) mark ony on first place
                 if(this.canPlus) {
                     if(stringArray[i] === '+' && i === 0) {
                         validValue += stringArray[i];
                     }
                 }
 
+                // allow adding minus(-) mark ony on first place
                 if(this.canMinus) {
                     if(stringArray[i] === '-' && i === 0) {
                         validValue += stringArray[i];
