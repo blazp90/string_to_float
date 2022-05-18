@@ -1,6 +1,6 @@
 <h1>Helper code snippet</h1>
 <p>
-  Helper function that i`m using instande of <input type="number" /><br />
+  Helper function that i`m using instande of <input+type%3D"number"+%2F><br />
   the input has up and down arrows, that can provide quick user mistakes if they using the keyboard.<br />
   if you are using the input on iPhone, you are allowed only to use arrowns. That`s not optimal if you want to input large numbers(like -1985,56).
 </p>
