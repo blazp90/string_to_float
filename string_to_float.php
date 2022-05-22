@@ -21,7 +21,7 @@
      */
     function string_to_float($number) {
         // work with numbers only
-        $number = preg_replace('#[^0-9\.,]#', '', $number);
+        $number = preg_replace('#[^0-9\.,-]#', '', $number);
 
         // explode string
         $stringArr = preg_split("/[,.]+/", $number);
