@@ -33,7 +33,9 @@
             foreach($stringArr as $letter) {
                 // add point before decimals
                 if(end($stringArr) === $letter) {
-                    $number .= '.';
+                    if(! empty($number)) {
+                        $number .= '.';
+                    }
                 }
                 $number .= $letter;
             }
